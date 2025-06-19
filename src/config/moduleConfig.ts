@@ -40,7 +40,7 @@ export const screens: ScreenConfig[] = [
   {
     id: 'videoIntro',
     type: 'coreMessage',
-    videoUrl: 'https://www.youtube.com/embed/3tpNgKgpyjs',
+    videoUrl: 'https://www.youtube.com/embed/FTfS5DiB9Ak',
     backgroundImageUrl: '/images/Waste_Micro_2.svg',
     backgroundAiHint: 'video play abstract',
   },
