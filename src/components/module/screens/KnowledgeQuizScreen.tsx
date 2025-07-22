@@ -136,7 +136,7 @@ export const KnowledgeQuizScreen: React.FC<KnowledgeQuizScreenProps> = ({ screen
                 className={cn(
                   "w-full justify-start text-left h-auto py-3 px-4 whitespace-normal",
                   "bg-background border border-border text-foreground hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--accent-foreground))]",
-                  isSelected && !feedback && "ring-2 ring-primary",
+                  isSelected && !feedback && "bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] ring-2 ring-primary",
                   feedback && isSelected && isCorrect && "bg-green-500 hover:bg-green-600 text-white",
                   feedback && isSelected && !isCorrect && "bg-red-500 hover:bg-red-600 text-white",
                   feedback && !isSelected && isCorrect && (isMobile ? "bg-green-200 text-green-800 border-green-500" : "bg-green-500/30 border-green-500 text-green-800")
