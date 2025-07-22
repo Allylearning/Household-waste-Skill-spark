@@ -1,4 +1,3 @@
-
 "use client";
 
 import type React from 'react';
@@ -66,13 +65,8 @@ export const ScreenContainer: React.FC<ScreenContainerProps> = ({ children, clas
 
     if (targetScreenElement) {
       isProgrammaticScroll.current = true; // Set flag before scrolling
-      targetScreenElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      
-      const timer = setTimeout(() => {
-        isProgrammaticScroll.current = false;
-      }, 1000); 
-
-      return () => clearTimeout(timer);
+      container.scrollTo({ top: targetScreenElement.offsetTop });
+      isProgrammaticScroll.current = false;
     }
   }, [currentScreenIndex]);
 
@@ -89,4 +83,3 @@ export const ScreenContainer: React.FC<ScreenContainerProps> = ({ children, clas
     </div>
   );
 };
-
