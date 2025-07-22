@@ -135,7 +135,7 @@ export const KnowledgeQuizScreen: React.FC<KnowledgeQuizScreenProps> = ({ screen
                 variant={buttonVariant}
                 className={cn(
                   "w-full justify-start text-left h-auto py-3 px-4 whitespace-normal",
-                  !isMobile && "bg-card hover:bg-muted border-border text-card-foreground", // Desktop specific button styling
+                  "bg-background border border-border text-foreground hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--accent-foreground))]",
                   isSelected && !feedback && "ring-2 ring-primary",
                   feedback && isSelected && isCorrect && "bg-green-500 hover:bg-green-600 text-white",
                   feedback && isSelected && !isCorrect && "bg-red-500 hover:bg-red-600 text-white",

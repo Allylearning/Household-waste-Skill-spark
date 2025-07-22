@@ -65,8 +65,10 @@ export const ScreenContainer: React.FC<ScreenContainerProps> = ({ children, clas
 
     if (targetScreenElement) {
       isProgrammaticScroll.current = true; // Set flag before scrolling
-      container.scrollTo({ top: targetScreenElement.offsetTop });
-      isProgrammaticScroll.current = false;
+      container.scrollTo({ top: targetScreenElement.offsetTop, behavior: 'smooth' });
+      setTimeout(() => {
+        isProgrammaticScroll.current = false;
+      }, 500);
     }
   }, [currentScreenIndex]);
 
