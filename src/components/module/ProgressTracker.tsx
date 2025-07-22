@@ -12,7 +12,6 @@ export const ProgressTracker: React.FC = () => {
   const progressPercentage = totalScreens > 0 ? ((currentScreenIndex + 1) / totalScreens) * 100 : 0;
 
   const handleMuteToggle = () => {
-    playSound('pop'); // Play a sound for the button press
     toggleMute();
   };
 

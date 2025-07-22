@@ -17,8 +17,7 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ screenConfig }) => {
 
   const handleStart = () => {
     // Audio context initiation is now handled by the StartOverlay.
-    // This button just plays its sound and moves to the next screen.
-    playSound('pop'); 
+    // This button just moves to the next screen.
     nextScreen();
   };
   

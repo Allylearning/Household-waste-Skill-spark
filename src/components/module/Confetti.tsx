@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useState } from 'react';
@@ -15,11 +14,11 @@ interface ConfettiPieceData {
 
 export const Confetti: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   const [pieces, setPieces] = useState<ConfettiPieceData[]>([]);
-  const { playSound } = useModule();
+  // Removed playSound from destructuring
+  useModule();
 
   useEffect(() => {
     if (isActive) {
-      playSound('confetti');
       const newPieces = Array.from({ length: NUM_CONFETTI }).map((_, i) => ({
         id: i,
         left: `${Math.random() * 100}%`,
@@ -36,7 +35,7 @@ export const Confetti: React.FC<{ isActive: boolean }> = ({ isActive }) => {
     } else {
       setPieces([]);
     }
-  }, [isActive, playSound]);
+  }, [isActive]);
 
   if (!isActive) return null;
 

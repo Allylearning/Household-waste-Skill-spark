@@ -33,7 +33,7 @@ const ModuleContext = createContext<ModuleContextType | undefined>(undefined);
 export const ModuleProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentScreenIndex, setCurrentScreenIndexState] = useState(0);
   const [earnedBadges, setEarnedBadges] = useState<Badge[]>([]);
-  const { playSoundEffect, playVoiceover, stopCurrentVoiceover } = useSound();
+  const { playSoundEffect = () => {}, playVoiceover, stopCurrentVoiceover } = useSound();
   const [isMuted, setIsMuted] = useState(false);
   const [audioReadyForPlayback, setAudioReadyForPlayback] = useState(false); // New state
 

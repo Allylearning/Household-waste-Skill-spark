@@ -1,8 +1,6 @@
-
 "use client";
 import type React from 'react';
 import type { ScreenConfig, Tip } from '@/types/module';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useModule } from '@/contexts/ModuleContext';
 import { cn } from '@/lib/utils';
@@ -21,7 +19,7 @@ export const InteractiveTipsScreen: React.FC<InteractiveTipsScreenProps> = ({ sc
       <h2 className="text-3xl font-bold font-headline text-primary mt-8 mb-6">
         {screenConfig.title}
       </h2>
-      <ScrollArea className="w-full max-w-md px-2 flex-1 min-h-0"> {/* Changed height to flex-1 min-h-0 */}
+      <div className="overflow-y-auto flex-1 w-full max-w-md px-2">
         <Accordion type="single" collapsible className="w-full space-y-3 pb-8">
           {screenConfig.tips.map((tip: Tip) => {
             return (
@@ -33,7 +31,6 @@ export const InteractiveTipsScreen: React.FC<InteractiveTipsScreenProps> = ({ sc
                 )}
               >
                 <AccordionTrigger
-                  onClick={() => playSound('pop')}
                   className={cn(
                     "w-full flex justify-between items-center text-left p-4 hover:no-underline [&[data-state=open]>svg]:text-primary",
                   )}
@@ -51,11 +48,10 @@ export const InteractiveTipsScreen: React.FC<InteractiveTipsScreenProps> = ({ sc
             );
           })}
         </Accordion>
-      </ScrollArea>
+      </div>
       <p className="text-sm mt-auto mb-2 animate-pulse text-primary">
         Tap cards to reveal tips! Swipe up when done.
       </p>
     </div>
   );
 };
-

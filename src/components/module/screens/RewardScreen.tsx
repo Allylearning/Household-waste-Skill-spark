@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
@@ -13,7 +12,7 @@ interface RewardScreenProps {
 }
 
 export const RewardScreen: React.FC<RewardScreenProps> = ({ screenConfig }) => {
-  const { earnedBadges, playSound, addBadge, resetModule } = useModule();
+  const { earnedBadges, addBadge, resetModule } = useModule();
   const { toast } = useToast();
 
   useEffect(() => {
@@ -40,7 +39,6 @@ export const RewardScreen: React.FC<RewardScreenProps> = ({ screenConfig }) => {
 
 
   const handleShare = async () => {
-    playSound('pop');
     const shareText = `I just earned the ${finalBadge?.name || 'Waste Expert'} badge with Newtown Sort-It! Learn how to sort waste correctly too! #NewtownSortIt`;
     if (navigator.share) {
       try {
@@ -63,7 +61,6 @@ export const RewardScreen: React.FC<RewardScreenProps> = ({ screenConfig }) => {
   };
 
   const handleVisitWebsite = () => {
-    playSound('pop');
     window.open('https://www.newtownboro.com/information/trash-recycling/', '_blank');
   };
 
@@ -104,4 +101,3 @@ export const RewardScreen: React.FC<RewardScreenProps> = ({ screenConfig }) => {
     </div>
   );
 };
-

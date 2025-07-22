@@ -1,4 +1,3 @@
-
 "use client";
 import type React from 'react';
 import { useState } from 'react';
@@ -44,12 +43,10 @@ export const KnowledgeQuizScreen: React.FC<KnowledgeQuizScreenProps> = ({ screen
     const selectedOption = currentQuestion.options.find(opt => opt.id === selectedOptionId);
     if (selectedOption?.isCorrect) {
       setFeedback('correct');
-      playSound('correct');
       setShowExplanation(true);
       toast({ title: "Correct!", description: currentQuestion.feedbackCorrect, className: "bg-green-500 text-white" });
     } else {
       setFeedback('incorrect');
-      playSound('incorrect');
       toast({ title: "Not Quite!", description: currentQuestion.feedbackIncorrect, variant: "destructive" });
     }
   };
@@ -78,7 +75,6 @@ export const KnowledgeQuizScreen: React.FC<KnowledgeQuizScreenProps> = ({ screen
     setShowExplanation(false);
     setQuizCompleted(false);
     setShowConfetti(false);
-    playSound('swoosh');
   };
 
   if (quizCompleted) {

@@ -1,4 +1,3 @@
-
 "use client";
 import type React from 'react';
 import { useState, useEffect } from 'react';
@@ -17,7 +16,7 @@ interface SortingGameScreenProps {
 }
 
 export const SortingGameScreen: React.FC<SortingGameScreenProps> = ({ screenConfig }) => {
-  const { playSound, addBadge, nextScreen } = useModule();
+  const { addBadge, nextScreen } = useModule();
   const { toast } = useToast();
   const [itemsToDrag, setItemsToDrag] = useState<WasteItem[]>(screenConfig.gameItems || []);
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
@@ -31,7 +30,6 @@ export const SortingGameScreen: React.FC<SortingGameScreenProps> = ({ screenConf
 
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>, item: WasteItem) => {
     e.dataTransfer.setData('itemId', item.id);
-    playSound('pop');
   };
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
@@ -45,11 +43,9 @@ export const SortingGameScreen: React.FC<SortingGameScreenProps> = ({ screenConf
     const isCorrect = item.type === bin.accepts;
 
     if (isCorrect) {
-      playSound('correct');
       setFeedback('correct');
       setScore(s => s + 1);
     } else {
-      playSound('incorrect');
       setFeedback('incorrect');
     }
 
@@ -81,7 +77,6 @@ export const SortingGameScreen: React.FC<SortingGameScreenProps> = ({ screenConf
 
   const handleBinTap = (bin: Bin) => {
     if (currentItem && !feedback) { 
-      playSound('pop');
       processItemPlacement(currentItem, bin);
     }
   };
@@ -92,7 +87,6 @@ export const SortingGameScreen: React.FC<SortingGameScreenProps> = ({ screenConf
     setDroppedInBin(null);
     setFeedback(null);
     setIsGameOver(false);
-    playSound('swoosh');
   };
   
   if (itemsToDrag.length === 0) {
@@ -220,4 +214,3 @@ export const SortingGameScreen: React.FC<SortingGameScreenProps> = ({ screenConf
     </div>
   );
 };
-

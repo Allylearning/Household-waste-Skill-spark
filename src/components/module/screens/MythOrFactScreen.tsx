@@ -1,4 +1,3 @@
-
 "use client";
 import type React from 'react';
 import { useState } from 'react';
@@ -16,7 +15,7 @@ interface MythOrFactScreenProps {
 }
 
 export const MythOrFactScreen: React.FC<MythOrFactScreenProps> = ({ screenConfig }) => {
-  const { playSound, nextScreen } = useModule();
+  const { nextScreen } = useModule();
   const { toast } = useToast();
   const [currentStatementIndex, setCurrentStatementIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState<'myth' | 'fact' | null>(null);
@@ -36,10 +35,8 @@ export const MythOrFactScreen: React.FC<MythOrFactScreenProps> = ({ screenConfig
     const isCorrect = (chosenAnswer === 'fact' && statementIsFact) || (chosenAnswer === 'myth' && !statementIsFact);
 
     if (isCorrect) {
-      playSound('correct');
       toast({ title: "Correct!", description: "You got it right!", className: "bg-green-500 text-white" });
     } else {
-      playSound('incorrect');
       toast({ title: "Not Quite!", description: "That's not the right answer.", variant: "destructive" });
     }
   };
@@ -47,7 +44,6 @@ export const MythOrFactScreen: React.FC<MythOrFactScreenProps> = ({ screenConfig
   const handleNext = () => {
     setShowFeedback(false);
     setUserAnswer(null);
-    playSound('swoosh');
 
     if (currentStatementIndex < statements.length - 1) {
       setCurrentStatementIndex(prev => prev + 1);
@@ -62,7 +58,6 @@ export const MythOrFactScreen: React.FC<MythOrFactScreenProps> = ({ screenConfig
     setUserAnswer(null);
     setShowFeedback(false);
     setSectionCompleted(false);
-    playSound('swoosh');
   };
 
   if (sectionCompleted) {
